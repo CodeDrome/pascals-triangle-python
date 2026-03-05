@@ -1,9 +1,11 @@
+from typing import List
+
 import math
 
 def main():
 
     """
-    Simply create and populate a Pascal's Triangle
+    Create and populate a Pascal's Triangle
     and then print it in two formats
     """
 
@@ -23,7 +25,7 @@ def main():
     print_centre(pt)
 
 
-def create(rowcount):
+def create(rowcount: int) -> List:
 
     """
     Create an empty list and then append lists of 0s, each list one longer than the previous
@@ -38,7 +40,7 @@ def create(rowcount):
     return pt
 
 
-def populate(pt):
+def populate(pt: List) -> None:
 
     """
     Populate an uninitialized list with actual values
@@ -48,10 +50,10 @@ def populate(pt):
 
         for c in range(0, len(pt[r])):
 
-            pt[r][c] = math.factorial(r) / (math.factorial(c) * math.factorial(r - c))
+            pt[r][c] = int(math.factorial(r) / (math.factorial(c) * math.factorial(r - c)))
 
 
-def print_left(pt):
+def print_left(pt: List) -> None:
 
     """
     Prints the triangle in a left-aligned format to demonstrate data structure
@@ -61,12 +63,12 @@ def print_left(pt):
 
         for c in range(0, len(pt[r])):
 
-            print("%-4d" % pt[r][c], end="")
+            print(f"{pt[r][c]:<-4d}", end="")
 
         print("")
 
 
-def print_centre(pt):
+def print_centre(pt: List) -> None:
 
     """
     Prints the triangle in a conventional centred format
@@ -80,11 +82,13 @@ def print_centre(pt):
 
         for c in range(0, len(pt[r])):
 
-            print("%-3d   " % pt[r][c], end="")
+            print(f"{pt[r][c]:<-3d}   ", end="")
 
         print("")
 
         inset-= 3
 
 
-main()
+if __name__ == "__main__":
+
+    main()
